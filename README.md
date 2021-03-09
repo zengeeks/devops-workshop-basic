@@ -42,9 +42,34 @@ GitHub Learning Lab のコースでは、日本語を選べるものもありま
 
 ![](./images/github-learning-lab_github-actions-hello-world_003.png)
 
+この GitHub Learning Lab では、Docker container を使ってオリジナルのアクションを作ります。実際のところ、ワークフローを組む際は既存のアクションを利用することが多いですが、どうしても必要な処理ができるアクションがない、独自処理を再利用できるようにしたい場合には有効です。
+
+さて、 Congraturations! までたどり着けましたか？ GitHub での進捗は、GitHub Learning Lab にも反映されます。なんどでも履修できるので、不安のあるときは見返してみるとよいでしょう。
+
+![](./images/github-learning-lab_github-actions-hello-world_004.png)
+
+![](./images/github-learning-lab_github-actions-hello-world_005.png)
+
+さいごに、Microsoft Learn の画面に戻り、「知識チェック」を試してみましょう。「回答を確認」で全問正解できればクリアです！「続行 >」ボタンを選択し、モジュールを終えましょう🎉
+
 ## 2. Node.js 製ウェブアプリで、継続的インテグレーション (CI) を行う
 
+前章では初歩のワークフロー作成を体験しました。この章では、実際の開発を想定して、継続的インテグレーションができるワークフローを作成してみましょう。
+
+こちらのモジュールに沿って進みます。
+
 - Microsoft Learn: [GitHub Actions を使用して継続的インテグレーション (CI) ワークフローを作成する](https://docs.microsoft.com/ja-jp/learn/modules/github-actions-ci/)
+
+演習では、 GitHub Learning Lab の [GitHub Actions: Continuous Integration](https://lab.github.com/githubtraining/github-actions:-continuous-integration) を実施します。このコースでは、下記の内容が含まれます。
+
+- テンプレートを使ってワークフローを作成
+- アクションログの確認
+- アプリケーションのテスト
+- ビルド アーティファクトを利用した複数ジョブの利用
+- 人によるレビューを介入させる機構
+- ブランチ プロテクション
+
+GitHub Learning Lab での演習が終わったら、Microsoft Learn に戻り「知識チェック」を済ませてモジュールを完了しましょう。
 
 ## 3. Node.js 製ウェブアプリを Azure Web App へデプロイする
 
