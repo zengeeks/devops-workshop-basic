@@ -54,7 +54,7 @@ GitHub Learning Lab のコースでは、日本語を選べるものもありま
 
 ## 2. Node.js 製ウェブアプリで、継続的インテグレーション (CI) を行う
 
-前章では初歩のワークフロー作成を体験しました。この章では、実際の開発を想定して、継続的インテグレーションができるワークフローを作成してみましょう。
+前章では初歩のワークフロー作成を体験しました。この章では、実際の開発を想定して、継続的インテグレーション（CI）ができるワークフローを作成してみましょう。
 
 こちらのモジュールに沿って進みます。
 
@@ -73,9 +73,33 @@ GitHub Learning Lab での演習が終わったら、Microsoft Learn に戻り�
 
 ## 3. Node.js 製ウェブアプリを Azure Web App へデプロイする
 
-- [GitHub Actions を使用した App Service へのデプロイ](https://docs.microsoft.com/ja-jp/azure/app-service/deploy-github-actions?tabs=applevel)
-  - [Azure で Node.js Web アプリを作成する
+CI の次は継続的デリバリー（CD）を体験してみましょう。GitHub Actions を利用しウェブアプリを Azure Web App へデプロイします。
+
+Microsoft Learn では、[GitHub Actions を使ったアプリケーションのビルドと Azure へのデプロイ](https://docs.microsoft.com/ja-jp/learn/modules/github-actions-cd/) というモジュールがあるのですが、これは Docker を使ったものであまり一般的ではないので、ここでは下記のドキュメントを参考に学習を進めます。
+
+- [Continuous deployment to Azure App Service](https://docs.microsoft.com/en-us/azure/app-service/deploy-continuous-deployment?tabs=github)
+  - ※ 日本語の記事の更新が追いついておらず GitHub Actions の記載がないため、英語のドキュメントを参照します。
+
+大まかな流れは下記のとおりです。
+
+1. ウェブアプリのコードを用意する
+1. Azure Web App のリソースを作成する
+1. Azure ポータルから Deployment Center を設定する
+
+1. ウェブアプリのコードを用意する（例: Node.js）
+   - [Azure で Node.js Web アプリを作成する
 ](https://docs.microsoft.com/ja-jp/azure/app-service/quickstart-nodejs?pivots=platform-windows) このクイックスタートの Node.js のコードを用いる
+1. Web App を一つデプロイしておく
+   - OS: Windows
+   - Runtime stack: Node.js 14 LTS
+   - SKU: Free
+1. 作った直後の Web App の画面を確認する
+1. Deployment Center から GitHub Actions を設定する
 
+- [ ] TODO: Azure Web App についての簡単な説明
+- [ ] [azure/webapps-deploy](https://github.com/Azure/webapps-deploy) について
+- [ ] 自動作成されたシークレットについて
 
-TODO: Azure Web App についての簡単な説明
+## 参考
+
+- [Azure リソースの種類に推奨される省略形 - Cloud Adoption Framework | Microsoft Docs](https://docs.microsoft.com/ja-jp/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations)
