@@ -86,20 +86,46 @@ Microsoft Learn では、[GitHub Actions を使ったアプリケーションの
 1. Azure Web App のリソースを作成する
 1. Azure ポータルから Deployment Center を設定する
 
-1. ウェブアプリのコードを用意する（例: Node.js）
-   - [Azure で Node.js Web アプリを作成する
-](https://docs.microsoft.com/ja-jp/azure/app-service/quickstart-nodejs?pivots=platform-windows) このクイックスタートの Node.js のコードを用いる
-1. Web App を一つデプロイしておく
-   - OS: Windows
-   - Runtime stack: Node.js 14 LTS
-   - SKU: Free
-1. 作った直後の Web App の画面を確認する
+まず、デプロイに使用するウェブアプリとして、上記ドキュメントの「[Prepare your repository](https://docs.microsoft.com/en-us/azure/app-service/deploy-continuous-deployment?tabs=github#prepare-your-repository)」で言及されている条件を満たすコードを、自身の GitHub のリポジトリに用意します。とくに利用したいコードがない場合は、こちら [Azure-Samples/nodejs-docs-hello-world](https://github.com/Azure-Samples/nodejs-docs-hello-world) をフォークしてください。（クイックスタート: [Azure で Node.js Web アプリを作成する
+](https://docs.microsoft.com/ja-jp/azure/app-service/quickstart-nodejs?pivots=platform-windows) で利用されているコードです。）
+
+つぎに、Azure Web App のリソースを作成しましょう。Runtime stack を前述で用意したコードに一致するよう選択し、その他の項目は適宜設定してリソースを作成してください。参考として、下記の設定で作成します。
+
+| 設定項目 | 説明 |
+|----|----|
+| Resource Group | 「Create new」を選択し、`rg-` で始まる文字列で作成 |
+| Name | `app-` で始まる文字列で作成 |
+| Publish | 「Code」を選択 |
+| Runtime stack | 「Node.js 14 LTS」を選択 |
+| Operationg System | 「Windows」を選択 |
+| Region | 最寄りのリージョン（「Japan East」など）を選択 |
+| App Service Plan | 「Create new」を選択し、 `plan-` で始まる文字列で作成 |
+| Sku and size | 「Free F1」 |
+| Monitoring タブ | 今回は設定不要 |
+| Tags タブ | 今回は設定不要 |
+
+![](./images/azure_create-web-app_001.png)
+
+リソース名は、この推奨される省略形を利用すると、識別しやすくなります。
+
+- [Azure リソースの種類に推奨される省略形 - Cloud Adoption Framework | Microsoft Docs](https://docs.microsoft.com/ja-jp/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations)
+
+リソースの作成が完了したら、作成直後のウェブアプリの様子を確認しておきましょう。「Go to resource」ボタンから作成したリソースの画面に遷移し、「Overview」で「URL」を参照します。
+
+それでは、早速 Deployment Center から GitHub Actions を設定しましょう！
+
+左のメニューから「Deployment Center」を選択肢画面に遷移します。「Seettings」タブを開き、
+
+![](./images/azure_app-service_deployment-center_001.png)
+
 1. Deployment Center から GitHub Actions を設定する
 
 - [ ] TODO: Azure Web App についての簡単な説明
 - [ ] [azure/webapps-deploy](https://github.com/Azure/webapps-deploy) について
 - [ ] 自動作成されたシークレットについて
 
+
+リソースの削除
+
 ## 参考
 
-- [Azure リソースの種類に推奨される省略形 - Cloud Adoption Framework | Microsoft Docs](https://docs.microsoft.com/ja-jp/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations)
