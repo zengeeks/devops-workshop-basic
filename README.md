@@ -75,6 +75,10 @@ GitHub Learning Lab での演習が終わったら、Microsoft Learn に戻り�
 
 CI の次は継続的デリバリー（CD）を体験してみましょう。GitHub Actions を利用しウェブアプリを Azure Web App へデプロイします。
 
+Azure Web App は様々な言語に対応した PaaS サービスです。詳細は下記ドキュメントなどをご参照ください。
+
+- [概要 - Azure App Service | Microsoft Docs](https://docs.microsoft.com/ja-jp/azure/app-service/overview)
+
 Microsoft Learn では、[GitHub Actions を使ったアプリケーションのビルドと Azure へのデプロイ](https://docs.microsoft.com/ja-jp/learn/modules/github-actions-cd/) というモジュールがあるのですが、これは Docker を使ったものであまり一般的ではないので、ここでは下記のドキュメントを参考に学習を進めます。
 
 - [Continuous deployment to Azure App Service](https://docs.microsoft.com/en-us/azure/app-service/deploy-continuous-deployment?tabs=github)
@@ -156,14 +160,33 @@ Web App の URL を開くと、紐づけた GitHub リポジトリのコード�
 
 ![](./images/displayed-hello-world_001.png)
 
-1. Deployment Center から GitHub Actions を設定する
+### `Azure/webapps-deploy` アクションについて
 
-- [ ] TODO: Azure Web App についての簡単な説明
-- [ ] [azure/webapps-deploy](https://github.com/Azure/webapps-deploy) について
-- [ ] 自動作成されたシークレットについて
+自動生成されたワークフローファイルでは、 [Azure/webapps-deploy](https://github.com/Azure/webapps-deploy) アクションを利用して Azure Web App にデプロイしています。
 
+Azure Web App にデプロイするには認証が必要で、このアクションでは、２通りのやり方が提供されています。詳しくはドキュメントをご参照ください。
 
-リソースの削除
+| 認証方法 | 説明 |
+|----|----|
+| パブリッシュプロファイルを利用する | Azureポータルなどを使用し「デプロイ資格情報」を取得し、`Azure/webapps-deploy` のプロパティ `publish-profile` に指定（指定するときは GitHub Actions のシークレット機能を利用） |
+| `Azure/login` アクションを利用する | サービスプリンシパルを用いて [Azure/login](https://github.com/Azure/login) アクションと組合せて認証 |
 
-## 参考
+なお、ワークフローを実行する環境のセットアップついては、各言語に合わせたガイドがあるのでご参照ください。
 
+- [ガイド - GitHub Docs](https://docs.github.com/ja/actions/guides)
+
+また、Azure Function へのデプロイには、[Azure/functions-action](https://github.com/Azure/functions-action) を利用できます。詳しくは下記をご参照ください。
+
+- [GitHub Actions を使用した Azure Functions のコードの更新 | Microsoft Docs](https://docs.microsoft.com/ja-jp/azure/azure-functions/functions-how-to-github-actions?tabs=dotnet)
+
+### リソースの削除
+
+Azure で作成したリソースは、リソースグループごと削除することがおすすめです。リソースグループの画面を開き、画面上部の「Delete resource group」から削除します。
+
+GitHub リポジトリは、「Settings」タブを開き、画面下部の「Delete this repository」を選択してください。一度削除すると復元できないので、よく確認の上操作を行ってください。
+
+## Congraturations 🎉
+
+最後までお疲れ様でした！
+
+ここまでたどり着けた方は、 GitHub Actions の基礎をしっかり学ぶことができたことと思います。GitHub Actions のアクションはこちらの [Marketplace](https://github.com/marketplace?type=actions) から探すことができます。快適な開発をお楽しみください！
