@@ -91,7 +91,7 @@ Microsoft Learn では、[GitHub Actions を使ったアプリケーションの
 
 つぎに、Azure Web App のリソースを作成しましょう。Runtime stack を前述で用意したコードに一致するよう選択し、その他の項目は適宜設定してリソースを作成してください。参考として、下記の設定で作成します。
 
-| 設定項目 | 説明 |
+| 項目 | 説明 |
 |----|----|
 | Resource Group | 「Create new」を選択し、`rg-` で始まる文字列で作成 |
 | Name | `app-` で始まる文字列で作成 |
@@ -114,9 +114,47 @@ Microsoft Learn では、[GitHub Actions を使ったアプリケーションの
 
 それでは、早速 Deployment Center から GitHub Actions を設定しましょう！
 
-左のメニューから「Deployment Center」を選択肢画面に遷移します。「Seettings」タブを開き、
+左のメニューから「Deployment Center」を選択肢画面に遷移します。「Seettings」タブを開き、各項目を設定します。
+
+| 設定項目 | 説明 |
+|----|----|
+| Source | 「GitHub」を選択 |
+| GitHub > Authorize （または Signed in as） | 利用する GitHub アカウントでサインインし接続。サインイン済みでアカウントを変えたい場合は「Change Account」から変更 |
+| GitHub > Organization | GitHub アカウントと同名の文字列、または利用したい組織を選択 |
+| GitHub > Repository | 利用するリポジトリを選択（前述のクイックスタートのコードを利用される方は「nodejs-docs-hello-world」を選択） |
+| GitHub > Branch | 利用するブランチを選択（前述のクイックスタートのコードを利用される方は「master」を選択） |
+| Build > Runtime stack | 利用するランタイムスタックを選択（前述のクイックスタートのコードを利用される方は「Node」を選択） |
+| Build > Version | 利用する言語のバージョンを選択（前述のクイックスタートのコードを利用される方は「Node 14 LTS」を選択） |
 
 ![](./images/azure_app-service_deployment-center_001.png)
+
+ここまで入力し、「Preview file」を選択すると、生成されるワークフローのコードを確認することができます。
+
+![](./images/azure_app-service_deployment-center_002.png)
+
+問題なければ、画面上部の「Save」を選択し保存します。
+
+![](./images/azure_app-service_deployment-center_003.png)
+
+設定した GitHub リポジトリを開き、作成されたワークフローファイルやアクションの実行状況を見てみましょう。
+
+`.github/workflows` ディレクトリに新しくワークフローファイルが作成され、先ほど Azure ポータルの「Preview file」で表示したコードが反映されていることがわかります。
+
+![](./images/github-workflow_by-azure-app-service-deployment-center_001.png)
+
+![](./images/github-workflow_by-azure-app-service-deployment-center_002.png)
+
+つぎに、アクションの実行状況を見てみると、先ほど作成した Web App にデプロイされていることがわかります。
+
+![](./images/github-workflow_by-azure-app-service-deployment-center_003.png)
+
+![](./images/github-workflow_by-azure-app-service-deployment-center_004.png)
+
+![](./images/github-workflow_by-azure-app-service-deployment-center_005.png)
+
+Web App の URL を開くと、紐づけた GitHub リポジトリのコードが反映されていることがわかります。
+
+![](./images/displayed-hello-world_001.png)
 
 1. Deployment Center から GitHub Actions を設定する
 
