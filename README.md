@@ -79,7 +79,7 @@ Azure Web App は様々な言語に対応した PaaS サービスです。詳細
 
 - [概要 - Azure App Service | Microsoft Docs](https://docs.microsoft.com/ja-jp/azure/app-service/overview)
 
-Microsoft Learn では、[GitHub Actions を使ったアプリケーションのビルドと Azure へのデプロイ](https://docs.microsoft.com/ja-jp/learn/modules/github-actions-cd/) というモジュールがあるのですが、これは Docker を使ったものであまり一般的ではないので、ここでは下記のドキュメントを参考に学習を進めます。
+ここでは、下記のドキュメントを参考に学習を進めます。
 
 - [Continuous deployment to Azure App Service](https://docs.microsoft.com/en-us/azure/app-service/deploy-continuous-deployment?tabs=github)
   - ※ 日本語の記事の更新が追いついておらず GitHub Actions の記載がないため、英語のドキュメントを参照します。
@@ -90,7 +90,9 @@ Microsoft Learn では、[GitHub Actions を使ったアプリケーションの
 1. Azure Web App のリソースを作成する
 1. Azure ポータルから Deployment Center を設定する
 
-まず、デプロイに使用するウェブアプリとして、上記ドキュメントの「[Prepare your repository](https://docs.microsoft.com/en-us/azure/app-service/deploy-continuous-deployment?tabs=github#prepare-your-repository)」で言及されている条件を満たすコードを、自身の GitHub のリポジトリに用意します。とくに利用したいコードがない場合は、こちら [Azure-Samples/nodejs-docs-hello-world](https://github.com/Azure-Samples/nodejs-docs-hello-world) をフォークしてください。（クイックスタート: [Azure で Node.js Web アプリを作成する
+なお、Microsoft Learn にも Azure Web App へデプロイするシナリオのモジュール [GitHub Actions を使ったアプリケーションのビルドと Azure へのデプロイ](https://docs.microsoft.com/ja-jp/learn/modules/github-actions-cd/) があります。こちらは、Docker コンテナのイメージを作成し、Azure Web App for Containers へデプロイする方法を学ぶことができます。ご興味ある方はご参考ください。
+
+それではまず、デプロイに使用するウェブアプリとして、上記ドキュメントの「[Prepare your repository](https://docs.microsoft.com/en-us/azure/app-service/deploy-continuous-deployment?tabs=github#prepare-your-repository)」で言及されている条件を満たすコードを、自身の GitHub のリポジトリに用意します。とくに利用したいコードがない場合は、こちら [Azure-Samples/nodejs-docs-hello-world](https://github.com/Azure-Samples/nodejs-docs-hello-world) をフォークしてください。（クイックスタート: [Azure で Node.js Web アプリを作成する
 ](https://docs.microsoft.com/ja-jp/azure/app-service/quickstart-nodejs?pivots=platform-windows) で利用されているコードです。）
 
 つぎに、Azure Web App のリソースを作成しましょう。Runtime stack を前述で用意したコードに一致するよう選択し、その他の項目は適宜設定してリソースを作成してください。参考として、下記の設定で作成します。
