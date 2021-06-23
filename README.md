@@ -12,7 +12,7 @@
 
 - [1. はじめての GitHub Actions のワークフローを作成する](#1-はじめての-github-actions-のワークフローを作成する)
 - [2. Node.js 製ウェブアプリで、継続的インテグレーション (CI) を行う](#2-nodejs-製ウェブアプリで継続的インテグレーション-ci-を行う)
-- [3. Node.js 製ウェブアプリで、継続的デプロイ（CD）を行う](#3-nodejs-製ウェブアプリで継続的デプロイ-cd-を行う)
+- [3. Node.js 製ウェブアプリで、継続的デプロイ (CD) を行う](#3-nodejs-製ウェブアプリで継続的デプロイ-cd-を行う)
   - Microsoft Azure の Web App へデプロイする
   - GitHub Packages の Container Registry にデプロイする
 
@@ -75,7 +75,7 @@ GitHub での進捗は、GitHub Learning Lab にも反映されます。なん�
 
 GitHub Learning Lab での演習が終わったら、Microsoft Learn に戻り「知識チェック」を済ませてモジュールを完了しましょう。
 
-## 3. Node.js 製ウェブアプリで、継続的デプロイ（CD）を行う
+## 3. Node.js 製ウェブアプリで、継続的デプロイ (CD) を行う
 
 デプロイしたい先にしたがって、リンク先にお進みください。
 
