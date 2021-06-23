@@ -12,9 +12,11 @@ Azure Web App は様々な言語に対応した PaaS サービスです。詳細
   - ※ 日本語の記事の更新が追いついておらず GitHub Actions の記載がないため、英語のドキュメントを参照します。
 
 <details><summary>備考: Microsoft Learn の関連コンテンツ</summary>
+<p>
 
 なお、Microsoft Learn にも Azure Web App へデプロイするシナリオのモジュール [GitHub Actions を使ったアプリケーションのビルドと Azure へのデプロイ](https://docs.microsoft.com/ja-jp/learn/modules/github-actions-cd/) があります。こちらは、Docker コンテナのイメージを作成し、Azure Web App for Containers へデプロイする方法を学ぶことができます。ご興味ある方はご参考ください。
 
+</p>
 </details>
 
 大まかな流れは下記のとおりです。
