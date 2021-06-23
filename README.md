@@ -80,7 +80,7 @@ GitHub Learning Lab での演習が終わったら、Microsoft Learn に戻り�
 デプロイしたい先にしたがって、リンク先にお進みください。
 
   - [Microsoft Azure の Web App へデプロイする](./continuous-deployment/deploy-to-azure-web-app.md)
-  - GitHub Packages の Container Registry にデプロイする
+  - [GitHub Packages の Container Registry にデプロイする](./continuous-deployment/push-container-image-to-github-packages.md)
 
 ## Congraturations 🎉
 
