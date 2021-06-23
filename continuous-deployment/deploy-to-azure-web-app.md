@@ -1,6 +1,6 @@
 # Node.js 製ウェブアプリを Microsoft Azure の Web App へデプロイする
 
-CI の次は継続的デリバリー（CD）を体験してみましょう。GitHub Actions を利用しウェブアプリを Azure Web App へデプロイします。
+GitHub Actions を利用し、ウェブアプリを Azure Web App へデプロイします。
 
 Azure Web App は様々な言語に対応した PaaS サービスです。詳細は下記ドキュメントなどをご参照ください。
 
@@ -26,14 +26,15 @@ Azure Web App は様々な言語に対応した PaaS サービスです。詳細
 - [3. Azure ポータルから Deployment Center を設定する](#3-azure-ポータルから-deployment-center-を設定する)
 - [4. リソースを削除する](#4-リソースを削除する)
 
-## 1. ウェブアプリのコードを用意する
+## 手順
+### 1. ウェブアプリのコードを用意する
 
 それではまず、デプロイに使用するウェブアプリとして、上記ドキュメントの「[Prepare your repository](https://docs.microsoft.com/en-us/azure/app-service/deploy-continuous-deployment?tabs=github#prepare-your-repository)」で言及されている条件を満たすコードを、自身の GitHub のリポジトリに用意します。
 
 とくに利用したいコードがない場合は、こちら [Azure-Samples/nodejs-docs-hello-world](https://github.com/Azure-Samples/nodejs-docs-hello-world) をフォークしてください。（クイックスタート: [Azure で Node.js Web アプリを作成する
 ](https://docs.microsoft.com/ja-jp/azure/app-service/quickstart-nodejs?pivots=platform-windows) で利用されているコードです。）
 
-## 2. Azure Web App のリソースを作成する
+### 2. Azure Web App のリソースを作成する
 
 つぎに、Azure Web App のリソースを作成しましょう。Runtime stack を前述で用意したコードに一致するよう選択し、その他の項目は適宜設定してリソースを作成してください。参考として、下記の設定で作成します。
 
@@ -58,7 +59,7 @@ Azure Web App は様々な言語に対応した PaaS サービスです。詳細
 
 リソースの作成が完了したら、作成直後のウェブアプリの様子を確認しておきましょう。「Go to resource」ボタンから作成したリソースの画面に遷移し、「Overview」で「URL」を参照します。
 
-## 3. Azure ポータルから Deployment Center を設定する
+### 3. Azure ポータルから Deployment Center を設定する
 
 それでは、早速 Deployment Center から GitHub Actions を設定しましょう！
 
@@ -104,7 +105,7 @@ Web App の URL を開くと、紐づけた GitHub リポジトリのコード�
 
 <img src="../images/displayed-hello-world_001.png" width="90%" alt="キャプチャ画像: Web App の URL を開き、デプロイが反映されていることを確認する" title="Web App の URL を開き、デプロイが反映されていることを確認する"><br/>
 
-### `Azure/webapps-deploy` アクションについて
+#### `Azure/webapps-deploy` アクションについて
 
 自動生成されたワークフローファイルでは、 [Azure/webapps-deploy](https://github.com/Azure/webapps-deploy) アクションを利用して Azure Web App にデプロイしています。
 
@@ -123,7 +124,7 @@ Azure Web App にデプロイするには認証が必要で、このアクショ
 
 - [GitHub Actions を使用した Azure Functions のコードの更新 | Microsoft Docs](https://docs.microsoft.com/ja-jp/azure/azure-functions/functions-how-to-github-actions?tabs=dotnet)
 
-## 4. リソースを削除する
+### 4. リソースを削除する
 
 Azure で作成したリソースは、リソースグループごと削除することがおすすめです。リソースグループの画面を開き、画面上部の「Delete resource group」から削除します。
 

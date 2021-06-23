@@ -77,10 +77,12 @@ GitHub Learning Lab での演習が終わったら、Microsoft Learn に戻り�
 
 ## 3. Node.js 製ウェブアプリで、継続的デプロイ (CD) を行う
 
+CI の次は継続的デリバリー（CD）を体験してみましょう。
+
 デプロイしたい先にしたがって、リンク先にお進みください。
 
   - [Microsoft Azure の Web App へデプロイする](./continuous-deployment/deploy-to-azure-web-app.md)
-  - [GitHub Packages の Container Registry にデプロイする](./continuous-deployment/push-container-image-to-github-packages.md)
+  - [GitHub Packages の Container Registry に push する](./continuous-deployment/push-container-image-to-github-packages.md)
 
 ## Congraturations 🎉
 
