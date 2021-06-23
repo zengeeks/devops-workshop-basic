@@ -10,18 +10,19 @@
 
 このワークショップでは、 [Microsoft Learn](https://docs.microsoft.com/ja-jp/learn/) や [GitHub Learning Lab](https://lab.github.com/) を用いて学習を進めます。
 
-- 1. はじめての GitHub Actions のワークフローを作成する
+- 1. [はじめての GitHub Actions のワークフローを作成する](#1-はじめての-github-actions-のワークフローを作成する)
 - 2. Node.js 製ウェブアプリで、継続的インテグレーション (CI) を行う
-- 3. Node.js 製ウェブアプリを Azure Web App へデプロイする
+- 3. Node.js 製ウェブアプリで、継続的デプロイ（CD）を行う
+  - Microsoft Azure Web App へデプロイする
+  - GitHub Packages の Container Registry にデプロイする
 
 ### ワークショップに必要な準備
 
-| 項目 | 説明 |
-|----|----|
-| GitHub アカウント | 実際に GitHub にリポジトリを作って作業するため、 GitHub アカウントをご用意ください。新しく作成する方は [こちら](https://github.com/join) から作成してください。 |
-| Azure アカウント | 実際にアプリケーションを Azure Web App にデプロイするため、 Azure アカウントをご用意ください。新しく作成する方は [こちら](https://azure.microsoft.com/ja-jp/free/) から作成してください。 |
-
-また、学習に利用する Microsoft Learn は、Microsoft アカウント、組織アカウントまたはGitHub アカウントでサインインするとコンテンツの実施状況を記録できます。適宜サインインしてご利用ください。
+| 項目 | 要否 | 説明 |
+|----|----|----|
+| GitHub アカウント | 必須 | 実際に GitHub にリポジトリを作って作業するため、 GitHub アカウントをご用意ください。新しく作成する方は [こちら](https://github.com/join) から作成してください。 |
+| Microsoft アカウント | (説明参照) | 本ワークショップで利用する Microsoft Learn は、Microsoft アカウントでサインインすると学習記録を記録することができます。サインインせずに利用することもできるので、ご自身の用途によって適宜ご利用ください。新しく作成される方は [こちら](https://account.microsoft.com/account/Account) から作成してください。 |
+| Azure アカウント | (説明参照) | Microsoft Azure へのデプロイを体験する場合は、Azure アカウントをご用意ください。新しく作成する方は [こちら](https://azure.microsoft.com/ja-jp/free/) から作成してください。 |
 
 ## 1. はじめての GitHub Actions のワークフローを作成する
 
@@ -35,12 +36,13 @@ GitHub Learning Lab のコースでは、日本語を選べるものもありま
 
 コースの学習を始めるには「Start free course」ボタンを選択して進めます。演習用のリポジトリを Public または Private のどちらに作成するか聞かれますので、特段理由がなければ、「Public」を選択し進めてください。
 
-![](./images/github-learning-lab_github-actions-hello-world_001.png)
-![](./images/github-learning-lab_github-actions-hello-world_002.png)
+<img src="./images/github-learning-lab_github-actions-hello-world_001.png" width="320px" alt="キャプチャ画像: 「Start free course」を選択する" title="「Start free course」を選択する">
+
+![キャプチャ画像: 「Public」を選択し、「Begin GitHub Actions: Hello World」ボタンを選択して進む](./images/github-learning-lab_github-actions-hello-world_002.png "「Public」を選択し、「Begin GitHub Actions: Hello World」ボタンを選択して進む")
 
 リポジトリの準備ができたら、「Start: Add a Dockerfile」ボタンを選択し進めましょう。
 
-![](./images/github-learning-lab_github-actions-hello-world_003.png)
+![キャプチャ画像: 「Satrt: Add a Dockerfile」ボタンを選択し、コースを開始する](./images/github-learning-lab_github-actions-hello-world_003.png "「Satrt: Add a Dockerfile」ボタンを選択し、コースを開始する")
 
 この GitHub Learning Lab では、Docker container を使ってオリジナルのアクションを作ります。実際のところ、ワークフローを組む際は既存のアクションを利用することが多いですが、どうしても必要な処理ができるアクションがない、独自処理を再利用できるようにしたい場合には有効です。
 
