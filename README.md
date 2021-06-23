@@ -13,7 +13,7 @@
 - 1. [はじめての GitHub Actions のワークフローを作成する](#1-はじめての-github-actions-のワークフローを作成する)
 - 2. Node.js 製ウェブアプリで、継続的インテグレーション (CI) を行う
 - 3. Node.js 製ウェブアプリで、継続的デプロイ（CD）を行う
-  - Microsoft Azure Web App へデプロイする
+  - Microsoft Azure の Web App へデプロイする
   - GitHub Packages の Container Registry にデプロイする
 
 ### ワークショップに必要な準備
@@ -36,21 +36,21 @@ GitHub Learning Lab のコースでは、日本語を選べるものもありま
 
 コースの学習を始めるには「Start free course」ボタンを選択して進めます。演習用のリポジトリを Public または Private のどちらに作成するか聞かれますので、特段理由がなければ、「Public」を選択し進めてください。
 
-<img src="./images/github-learning-lab_github-actions-hello-world_001.png" width="80%" alt="キャプチャ画像: 「Start free course」を選択する" title="「Start free course」を選択する">
+<img src="./images/github-learning-lab_github-actions-hello-world_001.png" width="80%" alt="キャプチャ画像: 「Start free course」を選択する" title="「Start free course」を選択する"><br/>
 
-![キャプチャ画像: 「Public」を選択し、「Begin GitHub Actions: Hello World」ボタンを選択して進む](./images/github-learning-lab_github-actions-hello-world_002.png "「Public」を選択し、「Begin GitHub Actions: Hello World」ボタンを選択して進む")
+<img src="./images/github-learning-lab_github-actions-hello-world_002.png" width="80%" alt="キャプチャ画像: 「Public」を選択し、「Begin GitHub Actions: Hello World」ボタンを選択して進む" title="「Public」を選択し、「Begin GitHub Actions: Hello World」ボタンを選択して進む"><br/>
 
 リポジトリの準備ができたら、「Start: Add a Dockerfile」ボタンを選択し進めましょう。
 
-![キャプチャ画像: 「Satrt: Add a Dockerfile」ボタンを選択し、コースを開始する](./images/github-learning-lab_github-actions-hello-world_003.png "「Satrt: Add a Dockerfile」ボタンを選択し、コースを開始する")
+<img src="./images/github-learning-lab_github-actions-hello-world_003.png" width="80%" alt="キャプチャ画像: 「Satrt: Add a Dockerfile」ボタンを選択し、コースを開始する" title="「Satrt: Add a Dockerfile」ボタンを選択し、コースを開始する"><br/>
 
 この GitHub Learning Lab では、Docker container を使ってオリジナルのアクションを作ります。実際のところ、ワークフローを組む際は既存のアクションを利用することが多いですが、どうしても必要な処理ができるアクションがない、独自処理を再利用できるようにしたい場合には有効です。
 
 さて、 Congraturations! までたどり着けましたか？ GitHub での進捗は、GitHub Learning Lab にも反映されます。なんどでも履修できるので、不安のあるときは見返してみるとよいでしょう。
 
-![](./images/github-learning-lab_github-actions-hello-world_004.png)
+<img src="./images/github-learning-lab_github-actions-hello-world_004.png" width="60%" alt="キャプチャ画像: コースを完了すると Congratulations! と表示される" title="コースを完了すると Congratulations! と表示される"><br/>
 
-![](./images/github-learning-lab_github-actions-hello-world_005.png)
+<img src="./images/github-learning-lab_github-actions-hello-world_005.png" width="80%" alt="キャプチャ画像: GitHub Learning Lab のコースの画面では進捗を確認できる" title="GitHub Learning Lab のコースの画面では進捗を確認できる"><br/>
 
 さいごに、Microsoft Learn の画面に戻り、「知識チェック」を試してみましょう。「回答を確認」で全問正解できればクリアです！「続行 >」ボタンを選択し、モジュールを終えましょう🎉
 
@@ -112,7 +112,7 @@ Azure Web App は様々な言語に対応した PaaS サービスです。詳細
 | Monitoring タブ | 今回は設定不要 |
 | Tags タブ | 今回は設定不要 |
 
-![](./images/azure_create-web-app_001.png)
+<img src="./images/azure_create-web-app_001.png" width="90%" alt="キャプチャ画像: Azure Web App を新規作成する" title="Azure Web App を新規作成する"><br/>
 
 リソース名は、この推奨される省略形を利用すると、識別しやすくなります。
 
@@ -134,35 +134,35 @@ Azure Web App は様々な言語に対応した PaaS サービスです。詳細
 | Build > Runtime stack | 利用するランタイムスタックを選択（前述のクイックスタートのコードを利用される方は「Node」を選択） |
 | Build > Version | 利用する言語のバージョンを選択（前述のクイックスタートのコードを利用される方は「Node 14 LTS」を選択） |
 
-![](./images/azure_app-service_deployment-center_001.png)
+<img src="./images/azure_app-service_deployment-center_001.png" width="90%" alt="キャプチャ画像: Azure Web App の Deployment Center で設定する" title="Azure Web App の Deployment Center で設定する"><br/>
 
 ここまで入力し、「Preview file」を選択すると、生成されるワークフローのコードを確認することができます。
 
-![](./images/azure_app-service_deployment-center_002.png)
+<img src="./images/azure_app-service_deployment-center_002.png" width="90%" alt="キャプチャ画像: Workflow Configuration のプレビューを確認する" title="Workflow Configuration のプレビューを確認する"><br/>
 
 問題なければ、画面上部の「Save」を選択し保存します。
 
-![](./images/azure_app-service_deployment-center_003.png)
+<img src="./images/azure_app-service_deployment-center_003.png" width="80%" alt="キャプチャ画像: 「Save」ボタンを選択し、Development Center の設定内容を保存する" title="「Save」ボタンを選択し、Development Center の設定内容を保存する"><br/>
 
 設定した GitHub リポジトリを開き、作成されたワークフローファイルやアクションの実行状況を見てみましょう。
 
 `.github/workflows` ディレクトリに新しくワークフローファイルが作成され、先ほど Azure ポータルの「Preview file」で表示したコードが反映されていることがわかります。
 
-![](./images/github-workflow_by-azure-app-service-deployment-center_001.png)
+<img src="./images/github-workflow_by-azure-app-service-deployment-center_001.png" width="90%" alt="キャプチャ画像: GitHub のリポジトリに `.github/workflows` ディレクトリが作成されている" title="GitHub のリポジトリに `.github/workflows` ディレクトリが作成されている"><br/>
 
-![](./images/github-workflow_by-azure-app-service-deployment-center_002.png)
+<img src="./images/github-workflow_by-azure-app-service-deployment-center_002.png" width="90%" alt="キャプチャ画像: Azure Web App の Deployment Center から作成したワークフローを確認する" title="Azure Web App の Deployment Center から作成したワークフローを確認する"><br/>
 
 つぎに、アクションの実行状況を見てみると、先ほど作成した Web App にデプロイされていることがわかります。
 
-![](./images/github-workflow_by-azure-app-service-deployment-center_003.png)
+<img src="./images/github-workflow_by-azure-app-service-deployment-center_003.png" width="90%" alt="キャプチャ画像: GitHub リポジトリで「Actions」タブを開きワークフローの実行状況を確認する" title="GitHub リポジトリで「Actions」タブを開きワークフローの実行状況を確認する"><br/>
 
-![](./images/github-workflow_by-azure-app-service-deployment-center_004.png)
+<img src="./images/github-workflow_by-azure-app-service-deployment-center_004.png" width="90%" alt="キャプチャ画像: 個別のワークフローの実行状況を開き、確認する" title="個別のワークフローの実行状況を開き、確認する"><br/>
 
-![](./images/github-workflow_by-azure-app-service-deployment-center_005.png)
+<img src="./images/github-workflow_by-azure-app-service-deployment-center_005.png" width="90%" alt="キャプチャ画像: ワークフローの各ジョブ、各ステップの実行状況を確認できる" title="ワークフローの各ジョブ、各ステップの実行状況を確認できる"><br/>
 
 Web App の URL を開くと、紐づけた GitHub リポジトリのコードが反映されていることがわかります。
 
-![](./images/displayed-hello-world_001.png)
+<img src="./images/displayed-hello-world_001.png" width="90%" alt="キャプチャ画像: Web App の URL を開き、デプロイが反映されていることを確認する" title="Web App の URL を開き、デプロイが反映されていることを確認する"><br/>
 
 ### `Azure/webapps-deploy` アクションについて
 
