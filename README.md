@@ -36,7 +36,7 @@ GitHub Learning Lab のコースでは、日本語を選べるものもありま
 
 コースの学習を始めるには「Start free course」ボタンを選択して進めます。演習用のリポジトリを Public または Private のどちらに作成するか聞かれますので、特段理由がなければ、「Public」を選択し進めてください。
 
-<img src="./images/github-learning-lab_github-actions-hello-world_001.png" width="320px" alt="キャプチャ画像: 「Start free course」を選択する" title="「Start free course」を選択する">
+<img src="./images/github-learning-lab_github-actions-hello-world_001.png" width="80%" alt="キャプチャ画像: 「Start free course」を選択する" title="「Start free course」を選択する">
 
 ![キャプチャ画像: 「Public」を選択し、「Begin GitHub Actions: Hello World」ボタンを選択して進む](./images/github-learning-lab_github-actions-hello-world_002.png "「Public」を選択し、「Begin GitHub Actions: Hello World」ボタンを選択して進む")
 
