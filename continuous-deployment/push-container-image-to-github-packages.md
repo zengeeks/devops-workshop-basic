@@ -48,7 +48,12 @@
 
 この演習では `docker.pkg.github.com` というレジストリに push や pull を行う指示があるのですが、実はこのレジストリは、Container registry の前身である Docker registry のものです。
 
-Container registry では `ghcr.io` に変わるので、各工程で置き換えて進めてください。
+Container registry では以下のように変更になるので、各工程で置き換えて進めてください。
+
+| 項目 | Docker registry(変更前) | Container regsitry(変更後) |
+|----|----|----|
+| レジストリの URL | `docker.pkg.github.com` | `ghcr.io` |
+| ドメイン | `docker.pkg.github.com/OWNER/REPOSITORY/IMAGE_NAME` | `ghcr.io/OWNER/IMAGE_NAME` |
 
 例えば、ワークフローの編集で `docker/build-push-action` アクションを記述する際は、このように指定します。
 
@@ -59,8 +64,9 @@ Container registry では `ghcr.io` に変わるので、各工程で置き換�
         username: ${{github.actor}}
         password: ${{secrets.GITHUB_TOKEN}}
         # registry: docker.pkg.github.com
+        # repository: OWNER/github-actions-for-packages/tic-tac-toe
         registry: ghcr.io
-        repository: OWNER/github-actions-for-packages/tic-tac-toe
+        repository: OWNER/tic-tac-toe
         tag_with_sha: true
 ```
 
@@ -99,7 +105,7 @@ Container registry では `ghcr.io` に変わるので、各工程で置き換�
     username: ${{github.actor}}
     password: ${{secrets.GITHUB_TOKEN}}
     registry: ghcr.io
-    repository: OWNER/github-actions-for-packages/tic-tac-toe
+    repository: OWNER/tic-tac-toe
     tag_with_sha: true
 ```
 
