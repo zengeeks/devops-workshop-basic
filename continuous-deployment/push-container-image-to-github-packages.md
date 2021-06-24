@@ -46,9 +46,11 @@
 
 一点だけ、演習の内容を変更する必要があります。
 
-この演習では `docker.pkg.github.com` というレジストリに push する指示があるのですが、実はこのレジストリは、Container registry の前身である Docker registry のものです。
+この演習では `docker.pkg.github.com` というレジストリに push や pull を行う指示があるのですが、実はこのレジストリは、Container registry の前身である Docker registry のものです。
 
-Container registry では `ghcr.io` に変わるので、そのように指定します。
+Container registry では `ghcr.io` に変わるので、各工程で置き換えて進めてください。
+
+例えば、ワークフローの編集で `docker/build-push-action` アクションを記述する際は、このように指定します。
 
 ```yml
     - name: Build container image and push it
@@ -62,7 +64,11 @@ Container registry では `ghcr.io` に変わるので、そのように指定�
         tag_with_sha: true
 ```
 
-GitHub Learning Lab で作成したコンテナイメージを起動できましたか？ ブラウザで `http://localhost:8080` にアクセスすると、ビルドしたアプリケーション Tic Tac Toe (三目並べ) で遊ぶことができます。
+--
+
+さて、GitHub Learning Lab で作成したコンテナイメージを起動できましたか？
+
+ブラウザで `http://localhost:8080` にアクセスすると、ビルドしたアプリケーション Tic Tac Toe (三目並べ) で遊ぶことができます。
 
 さて、GitHub Learning Lab での演習が終わったら、Microsoft Learn に戻り「知識チェック」を済ませてモジュールを完了しましょう。
 
