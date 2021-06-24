@@ -14,7 +14,7 @@
 - [2. Node.js 製ウェブアプリで、継続的インテグレーション (CI) を行う](#2-nodejs-製ウェブアプリで継続的インテグレーション-ci-を行う)
 - [3. Node.js 製ウェブアプリで、継続的デプロイ (CD) を行う](#3-nodejs-製ウェブアプリで継続的デプロイ-cd-を行う)
   - Microsoft Azure の Web App へデプロイする
-  - GitHub Packages の Container Registry にデプロイする
+  - GitHub Packages の Container registry にデプロイする
 
 ### ワークショップに必要な準備
 
@@ -82,7 +82,7 @@ CI の次は継続的デリバリー（CD）を体験してみましょう。
 デプロイしたい先にしたがって、リンク先にお進みください。
 
   - [Microsoft Azure の Web App へデプロイする](./continuous-deployment/deploy-to-azure-web-app.md)
-  - [GitHub Packages の Container Registry に push する](./continuous-deployment/push-container-image-to-github-packages.md)
+  - [GitHub Packages の Container registry で公開する](./continuous-deployment/push-container-image-to-github-packages.md)
 
 ## Congraturations 🎉
 
