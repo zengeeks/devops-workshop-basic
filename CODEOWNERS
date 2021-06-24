@@ -1,3 +1,5 @@
 * @dzeyelid
 
 *.cs @beachside-project
+
+/examples/ @beachside-project
