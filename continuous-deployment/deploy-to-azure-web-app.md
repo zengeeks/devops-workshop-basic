@@ -8,8 +8,7 @@ Azure Web App は様々な言語に対応した PaaS サービスです。詳細
 
 ここでは、下記のドキュメントを参考に学習を進めます。
 
-- [Continuous deployment to Azure App Service](https://docs.microsoft.com/en-us/azure/app-service/deploy-continuous-deployment?tabs=github)
-  - ※ 日本語の記事の更新が追いついておらず GitHub Actions の記載がないため、英語のドキュメントを参照します。
+- [継続的なデプロイを構成する - Azure App Service | Microsoft Docs](https://docs.microsoft.com/ja-jp/azure/app-service/deploy-continuous-deployment?tabs=github)
 
 <details><summary>備考: Microsoft Learn の関連コンテンツ</summary>
 <p>
