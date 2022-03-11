@@ -38,110 +38,48 @@
 
 - [GitHub Packages npmレジストリの利用 - GitHub Docs](https://docs.github.com/ja/packages/working-with-a-github-packages-registry/working-with-the-npm-registry)
 
-後半の演習では、 GitHub Learning Lab の [GitHub Actions: Publish to GitHub Packages](https://lab.github.com/githubtraining/github-actions:-publish-to-github-packages) を実施します。このコースには、下記の内容が含まれています。
+後半の演習では、 [githubtraining/exercise-publish-package](https://github.com/githubtraining/exercise-publish-package) に従い実施します。
 
-- ベースとなるワークフローのセットアップ（CI までの処理が記載されている）
-- `docker/build-push-action` アクションを用いて、Docker コンテナイメージのビルドと Container registry への push を行う
-- Personal access token を用いて、Container registry からイメージを取得し起動してみる
+### [githubtraining/exercise-publish-package](https://github.com/githubtraining/exercise-publish-package) の進め方
 
-一点だけ、演習の内容を変更する必要があります。
+このリポジトリが提供するサンプルの Dockerfile を用いて、イメージをビルドし、Container Registry にプッシュする流れです。
 
-この演習では `docker.pkg.github.com` というレジストリに push や pull を行う指示があるのですが、実はこのレジストリは、Container registry の前身である Docker registry のものです。
+ここで、 GitHub Actions のワークフローを利用して、これらの作業をしてみましょう。
 
-Container registry では以下のように変更になるので、各工程で置き換えて進めてください。
+リポジトリ [githubtraining/exercise-publish-package](https://github.com/githubtraining/exercise-publish-package) の「Use this template」から、このリポジトリをテンプレートとして新しいリポジトリを作成します。
 
-| 項目 | Docker registry(変更前) | Container regsitry(変更後) |
-|----|----|----|
-| レジストリの URL | `docker.pkg.github.com` | `ghcr.io` |
-| ドメイン | `docker.pkg.github.com/OWNER/REPOSITORY/IMAGE_NAME` | `ghcr.io/OWNER/IMAGE_NAME` |
+Actionsタブを開き、「New workflow」から「Publish Docker Container」テンプレートを探し、「Configure」ボタンで選択してワークフローの編集を開始します。
 
-例えば、ワークフローの編集で `docker/build-push-action` アクションを記述する際は、このように指定します。
+ワークフローを、演習で扱いやすいように２箇所書き換えます。
+
+まず、トリガを手動で実行できるように `workflow_dispatch` に変更しましょう。
 
 ```yml
-    - name: Build container image and push it
-      uses: docker/build-push-action@v1
-      with:
-        username: ${{github.actor}}
-        password: ${{secrets.GITHUB_TOKEN}}
-        # registry: docker.pkg.github.com
-        # repository: OWNER/github-actions-for-packages/tic-tac-toe
-        registry: ghcr.io
-        repository: OWNER/tic-tac-toe
-        tag_with_sha: true
+on:
+  workflow_dispatch:  # ← ここ
 ```
 
---
+つぎに、Dockerfile のディレクトリを参照させるため、 `docker/build-push-action` の引数 `context` を `sample-packages/docker` に書き換えます。
 
-さて、GitHub Learning Lab で作成したコンテナイメージを起動できましたか？
+```yml
+      - name: Build and push Docker image
+        id: build-and-push
+        uses: docker/build-push-action@main
+        with:
+          context: sample-packages/docker  # ← ここ
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+```
 
-ブラウザで `http://localhost:8080` にアクセスすると、ビルドしたアプリケーション Tic Tac Toe (三目並べ) で遊ぶことができます。
+また、署名に関するステップは、この演習では割愛するのでコメントアウトしておきます。残しておいても問題はありません。
+
+ワークフローをコミット＆プッシュし、正常にワークフローが終了するまで待ちます。
+
+ワークフローが完了したら、リポジトリトップの左サイドバーに Packages にプッシュしたイメージへのリンクが表示されるので、選択しイメージを確認します。
+
+ローカルでイメージの動作確認を行うには、こちらを参考に認証を行い操作します。
+
+- [コンテナレジストリの利用 - GitHub Docs](https://docs.github.com/ja/packages/working-with-a-github-packages-registry/working-with-the-container-registry#authenticating-to-the-container-registry)
 
 さて、GitHub Learning Lab での演習が終わったら、Microsoft Learn に戻り「知識チェック」を済ませてモジュールを完了しましょう。
-
-## 備考
-
-### `docker/build-push-action` アクションについて
-
-`docker/build-push-action` は、[Docker](https://github.com/docker) によって提供されている、Docker イメージをビルドし指定したレジストリに push することができるアクションです。
-
-さまざまな機能が提供されており、柔軟なワークフローの実現をサポートします。詳しくは Marketplace や当該リポジトリをご参照ください。
-
-なお、GitHub Learning Lab の演習では `v1` が利用されていましたが、現在は Docker [Buildx](https://github.com/docker/buildx) に対応した `v2` がリリースされており、こちらの利用が推奨されています。実際に使う際は、よくご確認の上ご利用ください。
-
-- `docker/build-push-action`
-  - [Build and push Docker images · Actions · GitHub Marketplace](https://github.com/marketplace/actions/build-and-push-docker-images)
-  - [Upgrade notes - docker/build-push-action](https://github.com/docker/build-push-action/blob/master/UPGRADE.md)
-  - [Handle tags and labels with `docker/metadata-action` - docker/build-push-action](https://github.com/docker/build-push-action/blob/master/docs/advanced/tags-labels.md)
-- `docker/login-action`: [Docker Login · Actions · GitHub Marketplace](https://github.com/marketplace/actions/docker-login)
-- `docker/metadata-action`: [Docker Metadata action · Actions · GitHub Marketplace](https://github.com/marketplace/actions/docker-metadata-action)
-
-#### `docker/build-push-action` のアップグレードのサンプル
-
-`docker/build-push-action@v1` のサンプル（演習から引用）
-```yml
-- name: Build container image and push it
-  uses: docker/build-push-action@v1
-  with:
-    username: ${{github.actor}}
-    password: ${{secrets.GITHUB_TOKEN}}
-    registry: ghcr.io
-    repository: OWNER/tic-tac-toe
-    tag_with_sha: true
-```
-
-`docker/build-push-action@v2` のサンプル（演習のコードを変換）
-```yml
-# Docker Buildx のセットアップ
-- name: Set up Docker Buildx
-  uses: docker/setup-buildx-action@v1
-
-# レジストリへログイン
-- name: Login to GitHub Container registry
-  uses: docker/login-action@v1
-  with:
-    registry: ghcr.io
-    username: ${{github.actor}}
-    password: ${{secrets.GITHUB_TOKEN}}
-
-# tag_with_sha: true に相当するタグを生成
-- name: Docker meta
-  id: meta
-  uses: docker/metadata-action@v3
-  with:
-    images: ghcr.io/OWNER/tic-tac-toe
-    tags: |
-      type=sha
-
-# Docker イメージをビルドし push する
-- name: Build container image and push it
-  uses: docker/build-push-action@v2
-  with:
-    push: true
-    tags: ${{ steps.meta.outputs.tags }}
-```
-
-### 旧 Docker registry について
-
-旧 Docker registry に関しては、下記をご参照ください。
-
-- [Migrating to the Container registry from the Docker registry - GitHub Docs](https://docs.github.com/en/packages/working-with-a-github-packages-registry/migrating-to-the-container-registry-from-the-docker-registry)
